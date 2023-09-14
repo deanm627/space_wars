@@ -1,32 +1,38 @@
 'use strict';
 
-document.addEventListener('DOMContentLoaded', function () {
-    
-    const starWarsPerson = document.getElementById('starWarsPerson');
-    let peopleList = document.createElement('ul');
+const peopleList = document.getElementById('peopleList');
+const planetList = document.getElementById('planetList');
+const starshipList = document.getElementById('starshipList');
+const personSubmitButton = document.getElementById('personSubmitButton');
+const planetSubmitButton = document.getElementById('planetSubmitButton');
+const starshipSubmitButton = document.getElementById('starshipSubmitButton');
 
-    fetch('https://swapi.dev/api/people/1/')
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(data) {
-            console.log(data);
-            starWarsPerson.innerText = data.name;
-        });
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("DOM loaded");
 
-    // This returns all the names in a list
-    //
-    fetch('https://swapi.dev/api/people/')
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(data) {
-            console.log(data);
-            for (let i=0; i<data.results.length; i++) {
-                let listItem = document.createElement('li');
-                listItem.innerText = data.results[i].name;
-                peopleList.append(listItem);
-            }
-            starWarsPerson.appendChild(peopleList);
-        });
+    const peopleUrl = 'https://swapi.dev/api/people/';
+    get(peopleUrl).then(function(response) {
+        makeList(response, peopleList);
+    });
+
+    const planetUrl = "https://swapi.dev/api/planets/";
+    get(planetUrl).then(function(response) {
+        makeList(response, planetList);
+    });
+
+    const starshipUrl = "https://swapi.dev/api/starships/";
+    get(starshipUrl).then(function(response) {
+        makeList(response, starshipList);
+    });
 });
+
+function makeList(obj, category) {
+    let selectList = document.createElement('select');
+    for (let i=0; i<obj.results.length; i++) {
+        let listItem = document.createElement('option');
+        listItem.value = obj.results[i].name;
+        listItem.text = obj.results[i].name;
+        selectList.appendChild(listItem);
+    };
+    category.append(selectList);
+};

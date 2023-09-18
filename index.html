@@ -7,27 +7,26 @@
     <link rel="stylesheet" href="./styles/styles.css" />
 </head>
 <body>
+    <h1>STAR WARS INFO</h1>
     <main class="wrapper">
-        <h1>Star Wars Strings</h1>
-        <div id="starWarsPerson">Star Wars Person</div>
-            <form id="peopleList">
-                <button id="personSubmitButton" type="submit">Submit</button>
-            </form>
-            <form id="peopleListDetails">
-            </form>
-        <div id="starWarsPlanets">Star Wars Planets</div>
-            <form id="planetList">
-                <button id="planetSubmitButton" type="submit">Submit</button>
-            </form>
-            <form id="planetListDetails">
-            </form>
-        <div id="starWarsStarships">Star Wars Starships</div>
-            <form id="starshipList">
-                <button class="hidden" id="starshipSubmitButton" type="submit">Submit</button>
-            </form>
-            <form id="starshipListDetails">
-            </form>
-        <div id="result"></div>
+        <div class="section" id="starWarsPerson">
+            <h2>Person</h2>
+            <form id="peopleList" class="firstList"></form>
+            <form id="peopleListDetails" class="secondList"></form>
+        </div>
+        <div class="section" id="starWarsPlanets">
+            <h2>Planet</h2>
+            <form id="planetList" class="firstList"></form>
+            <form id="planetListDetails" class="secondList"></form>
+        </div>
+        <div class="section" id="starWarsStarships">
+            <h2>Starship</h2>
+            <form id="starshipList" class="firstList"></form>
+            <form id="starshipListDetails" class="secondList"></form>
+        </div>
+        <div id="result">
+            <p id="itemToDisplay"></p>
+        </div>
     </main>
     <script src="./scripts/scripts.js"></script>
     <script src="./scripts/get.js"></script>

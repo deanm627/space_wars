@@ -117,6 +117,7 @@ function makeList(obj, category) {
 function displayOptionsList(obj, category) {
     const keyListArr = Object.keys(obj);
     const filteredArr = keyListArr.filter((key) => key !== "name" && key !== "created" && key !== "edited" && key !== "url" && key !== "model");
+    category.innerHTML = "";
     const list = document.createElement('select');
     for (let i=0; i<filteredArr.length; i++) {
         const listItem = document.createElement('option');
